@@ -1,6 +1,11 @@
 import { projects } from "../data/projects";
+import { translations } from "../i18n/translations";
+import { useLanguage } from "../context/LanguageContext";
 
 const Projects = () => {
+  const { language } = useLanguage();
+  const t = translations[language].projects;
+
   return (
     <section
       id="projects"
@@ -9,12 +14,11 @@ const Projects = () => {
       <div className="max-w-6xl mx-auto">
         {/* Title */}
         <h2 className="text-4xl font-bold text-center">
-          💡 <span className="text-indigo-500">Projectos</span>
+          💡 <span className="text-indigo-500">{t.title}</span>
         </h2>
 
         <p className="text-gray-400 text-center mt-4 max-w-2xl mx-auto">
-          Algunos proyectos en los que trabajé, enfocados en resolver problemas
-          reales y aplicar buenas prácticas de desarrollo.
+          {t.subtitle}
         </p>
 
         {/* Grid */}
@@ -44,7 +48,7 @@ const Projects = () => {
                 </h3>
 
                 <p className="text-gray-400 mt-3 text-sm">
-                  {project.description}
+                  {project.description[language]}
                 </p>
 
                 {/* Tech */}
@@ -67,7 +71,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="text-sm text-indigo-400 hover:text-indigo-300"
                   >
-                    GitHub →
+                    {t.github} →
                   </a>
 
                   {project.demo && (
@@ -77,7 +81,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="text-sm text-gray-300 hover:text-white"
                     >
-                      Demo →
+                      {t.demo} →
                     </a>
                   )}
                 </div>
@@ -91,4 +95,3 @@ const Projects = () => {
 };
 
 export default Projects;
-    

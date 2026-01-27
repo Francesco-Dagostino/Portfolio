@@ -1,17 +1,23 @@
+import { translations } from "../i18n/translations";
+import { useLanguage } from "../context/LanguageContext";
+
 const Contact = () => {
+  const { language } = useLanguage();
+  const t = translations[language].contact;
+
   return (
     <section
       id="contact"
-      className="min-h-screen bg-gray-950 text-white py-20 px-6"
+      className="bg-gray-950 text-white min-h-[70vh] py-24 px-6"
     >
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center animate-fade-up">
         <h2 className="text-4xl font-bold">
-          Contacto <span className="text-indigo-500">📩</span>
+          <span className="text-indigo-500">📩</span>{" "}
+          <span className="text-indigo-500">{t.title}</span>
         </h2>
 
         <p className="text-gray-400 mt-4">
-          ¿Tenés una propuesta, proyecto o simplemente querés charlar?  
-          Estoy abierto a nuevas oportunidades.
+          {t.subtitle}
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
@@ -21,9 +27,8 @@ const Contact = () => {
             rel="noopener noreferrer"
             className="px-6 py-3 rounded-xl bg-indigo-500 text-white text-sm font-medium hover:bg-indigo-600 transition"
           >
-            Enviar email
+            {t.email}
           </a>
-
 
           <a
             href="https://www.linkedin.com/in/francesco-dagostino-391260262/"
@@ -31,7 +36,7 @@ const Contact = () => {
             rel="noopener noreferrer"
             className="px-6 py-3 rounded-xl border border-gray-700 text-gray-300 text-sm hover:text-white hover:border-gray-500 transition"
           >
-            LinkedIn
+            {t.linkedin}
           </a>
         </div>
       </div>

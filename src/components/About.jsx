@@ -1,38 +1,31 @@
+import { translations } from "../i18n/translations";
+import { useLanguage } from "../context/LanguageContext";
+
 const About = () => {
+  const { language } = useLanguage(); // 👈 CLAVE
+  const t = translations[language].about;
+
   return (
     <section
       id="about"
-      className="min-h-screen bg-gray-950 text-white py-20 px-6"
+      className="min-h-screen bg-gray-950 text-white flex items-center pt-16 px-6"
     >
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold">
-          Sobre <span className="text-indigo-500">mí</span>
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold">
+          {t.title} <span className="text-indigo-500">{t.highlight}</span>
         </h2>
 
         <p className="text-gray-400 mt-6 leading-relaxed">
-          Soy desarrollador web junior de Argentina 🇦🇷, enfocado en crear
-          aplicaciones funcionales, escalables y con una buena experiencia de
-          usuario. Me interesa entender el problema antes de escribir código y
-          aplicar buenas prácticas en cada proyecto.
+          {t.paragraph1}
         </p>
 
         <p className="text-gray-400 mt-4 leading-relaxed">
-          Actualmente estudio la Tecnicatura Universitaria en Programación en la
-          UTN Rosario, y complemento mi formación desarrollando proyectos
-          personales con tecnologías modernas.
+          {t.paragraph2}
         </p>
 
         {/* Skills */}
         <div className="flex flex-wrap justify-center gap-3 mt-10">
-          {[
-            "React",
-            "Tailwind",
-            "JavaScript",
-            "ASP.NET Core",
-            "Entity Framework",
-            "SQL",
-            "Git",
-          ].map((skill) => (
+          {t.skills.map((skill) => (
             <span
               key={skill}
               className="px-4 py-2 text-sm rounded-full bg-gray-900 border border-gray-800 text-gray-300"
