@@ -1,41 +1,30 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { translations } from "../i18n/translations";
 import LanguageToggle from "../i18n/LanguageToggle";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { language } = useLanguage();
+  const t = translations[language].navbar;
 
-  console.log("Idioma actual:", language);
-
-  const texts = {
-    es: {
-      links: [
-        { name: "Inicio", href: "#home" },
-        { name: "Sobre mí", href: "#about" },
-        { name: "Proyectos", href: "#projects" },
-        { name: "Contacto", href: "#contact" },
-      ],
-    },
-    en: {
-      links: [
-        { name: "Home", href: "#home" },
-        { name: "About", href: "#about" },
-        { name: "Projects", href: "#projects" },
-        { name: "Contact", href: "#contact" },
-      ],
-    },
-  };
-
-  const links = texts[language].links;
+  const links = [
+    { name: t.home, href: "#home" },
+    { name: t.about, href: "#about" },
+    { name: t.projects, href: "#projects" },
+    { name: t.contact, href: "#contact" },
+  ];
 
   return (
     <header className="fixed top-0 w-full z-50 bg-gray-950/80 backdrop-blur border-b border-gray-800">
       <div className="relative max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         
         {/* Logo */}
-        <a href="#home" className="text-lg font-semibold text-white tracking-wide">
+        <a
+          href="#home"
+          className="text-lg font-semibold text-white tracking-wide"
+        >
           Francesco D´Agostino
         </a>
 

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
-import {translations} from "../i18n/translations"
+import { translations } from "../i18n/translations";
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -9,10 +9,11 @@ const Hero = () => {
 
   const [animationKey, setAnimationKey] = useState(0);
 
+  // Repetir animación cada 15 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setAnimationKey((prev) => prev + 1);
-    }, 15000); // cada 15 segundos
+    }, 15000);
 
     return () => clearInterval(interval);
   }, []);
@@ -38,7 +39,8 @@ const Hero = () => {
         {/* Animated title */}
         <h1
           key={animationKey}
-          className="mt-3 text-4xl md:text-6xl font-bold leading-tight flex justify-center gap-3 flex-wrap"
+          className="mt-3 text-4xl md:text-6xl font-bold leading-tight 
+                     flex justify-center gap-3 flex-wrap"
         >
           {titleWords.map((word, index) => (
             <motion.span
@@ -50,9 +52,7 @@ const Hero = () => {
                 duration: 0.4,
                 ease: "easeOut",
               }}
-              className={
-                word === t.hero.name ? "text-indigo-500" : ""
-              }
+              className={word === t.hero.name ? "text-indigo-500" : ""}
             >
               {word}
             </motion.span>
@@ -66,12 +66,33 @@ const Hero = () => {
             : "I build web applications focused on solving real problems, combining good design with solid technical solutions."}
         </p>
 
-        {/* Secondary */}
+        {/* Secondary info */}
         <p className="mt-2 text-sm text-gray-500">
           {language === "es"
             ? "Estudiante de Tecnicatura Universitaria en Programación — UTN Rosario"
             : "University Programming Technician student — UTN Rosario"}
         </p>
+
+        {/* CTA */}
+        <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#projects"
+            className="px-6 py-3 rounded-xl bg-indigo-500 text-white text-sm font-medium
+                       hover:bg-indigo-600 transition"
+          >
+            {language === "es" ? "Ver proyectos" : "View projects"}
+          </a>
+
+          <a
+            href="/cv-francesco-dagostino.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-xl border border-gray-700 text-gray-300 text-sm
+                       hover:text-white hover:border-gray-500 transition"
+          >
+            {language === "es" ? "Descargar CV 📄" : "Download CV 📄"}
+          </a>
+        </div>
       </div>
     </section>
   );

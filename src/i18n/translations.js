@@ -6,6 +6,7 @@ export const translations = {
       name: "Francesco",
     },
     navbar: {
+      home: "Inicio",
       about: "Sobre mí",
       projects: "Proyectos",
       contact: "Contacto",
@@ -51,7 +52,8 @@ export const translations = {
       name: "Francesco",
     },
     navbar: {
-      about: "About me",
+      home: "Home",
+      about: "About",
       projects: "Projects",
       contact: "Contact",
     },
